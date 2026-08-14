@@ -1,0 +1,218 @@
+# ============================================================
+# Hugo + Stack v4 配置
+# Hugo 0.165.x / hugo-theme-stack v4
+# ============================================================
+
+baseURL: "https://dragondays.github.io/"
+title: "Dennys的博客"
+theme: "hugo-theme-stack"
+copyright: "Dennys"
+
+# Hugo v0.158+ 使用 locale。
+locale: "zh-CN"
+defaultContentLanguage: "zh"
+hasCJKLanguage: true
+
+# 分页
+pagination:
+  pagerSize: 3
+
+# Hugo 内置服务
+services:
+  googleAnalytics:
+    id: ""
+
+# 固定链接
+permalinks:
+  post: "/p/:slug/"
+  page: "/:slug/"
+
+# 分类法：Stack 主题的“分类”和“标签云”小组件依赖这两个定义。
+taxonomies:
+  category: categories
+  tag: tags
+
+# ============================================================
+# Stack 主题参数
+# ============================================================
+params:
+  mainSections:
+    - post
+
+  rssFullContent: true
+  SortBy: "default"
+
+  # favicon 放在 assets/img/favicon.png 后填写 img/favicon.png
+  favicon: ""
+
+  footer:
+    since: 2026
+    customText: ""
+
+  dateFormat:
+    published: ":date_full"
+    lastUpdated: ":date_full"
+
+  # 左侧栏
+  sidebar:
+    compact: false
+    emoji: "🐉"
+    subtitle: "记录 Linux、云原生与 DevOps 学习实践"
+    # 文件位置：assets/img/avatar.png
+    avatar: "img/avatar.png"
+
+  # 文章设置
+  article:
+    headingAnchor: false
+    math: false
+    toc: true
+    readingTime: true
+
+    list:
+      showTags: false
+
+    license:
+      enabled: true
+      default: "Licensed under CC BY-NC-SA 4.0"
+
+    mermaid:
+      look: "classic"
+      lightTheme: "default"
+      darkTheme: "dark"
+      securityLevel: "strict"
+      htmlLabels: true
+      transparentBackground: false
+
+  # ==========================================================
+  # 评论：Giscus
+  # ==========================================================
+  comments:
+    enabled: true
+    provider: "giscus"
+
+    giscus:
+      repo: "dragondays/dragondays.github.io"
+      repoID: "R_kgDOT3hMyw"
+      category: "General"
+      categoryID: "DIC_kwDOT3hMy84DDVUB"
+      mapping: "pathname"
+      strict: 0
+      reactionsEnabled: 1
+      emitMetadata: 0
+      inputPosition: "top"
+      lightTheme: "light"
+      darkTheme: "dark_dimmed"
+      lang: "zh-CN"
+      loading: "lazy"
+
+  # 首页右侧栏，布局接近 brume.top
+  widgets:
+    homepage:
+      - type: search
+      - type: archives
+        params:
+          limit: 5
+      - type: categories
+        params:
+          limit: 10
+      - type: tag-cloud
+        params:
+          limit: 10
+
+    page:
+      - type: toc
+
+  opengraph:
+    twitter:
+      site: ""
+      card: "summary_large_image"
+
+  # 明暗模式
+  colorScheme:
+    toggle: true
+    default: "auto"
+
+  # 图片处理
+  imageProcessing:
+    autoOrient: false
+
+    external:
+      timeout: "5s"
+
+    content:
+      widths:
+        - 800
+        - 1600
+        - 2400
+      enabled: true
+
+    thumbnail:
+      enabled: true
+
+  # Cookie 提示，默认关闭
+  cookies:
+    enabled: false
+    showSettings: true
+    categories:
+      analytics: true
+      functional: true
+
+# ============================================================
+# 菜单
+# About / Archives / Search / Links 建议由对应页面 front matter
+# 自动加入 main 菜单，所以这里不重复写 main。
+# ============================================================
+menu:
+  main: []
+
+  social:
+    - identifier: "github"
+      name: "GitHub"
+      url: "https://github.com/dragondays"
+      params:
+        icon: "brand-github"
+
+# ============================================================
+# 相关文章
+# ============================================================
+related:
+  includeNewer: true
+  threshold: 60
+  toLower: false
+  indices:
+    - name: "tags"
+      weight: 100
+    - name: "categories"
+      weight: 200
+
+# ============================================================
+# Markdown / 代码高亮
+# ============================================================
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+    extensions:
+      passthrough:
+        enable: true
+        delimiters:
+          block:
+            - ['\\[', '\\]']
+            - ['$$', '$$']
+          inline:
+            - ['\\(', '\\)']
+
+  tableOfContents:
+    startLevel: 2
+    endLevel: 4
+    ordered: true
+
+  highlight:
+    noClasses: false
+    codeFences: true
+    guessSyntax: true
+    lineNoStart: 1
+    lineNos: true
+    lineNumbersInTable: true
+    tabWidth: 4
