@@ -20,7 +20,7 @@ pagination:
 # Hugo 内置服务
 services:
   googleAnalytics:
-    id: ""
+    id: "G-YYM5NC37CW"
 
 # 固定链接
 permalinks:
